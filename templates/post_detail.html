@@ -108,6 +108,11 @@
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
                 </div>
+                <div class="alert alert-success {{ message.tags }} alert-dismissible fade show" id="comment" role="alert-success">
+                    Message submitted successfuly
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
                 {% else %}
                 {% if user.is_authenticated %}
 
@@ -120,9 +125,18 @@
                 </form>
                 {% endif %}
                 {% endif %}
+                
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    setTimeout(function () {
+        let comments = document.getElementById('comment');
+        let alert = new bootstrap.Alert(comments);
+        alert.close();
+    }, 2500);
+</script>
 
 {% endblock content %}
